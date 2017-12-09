@@ -13,9 +13,9 @@ script:
       #echo ">>> TRAVIS_EVENT_TYPE = " + $TRAVIS_EVENT_TYPE;
       - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; 
         then echo "*** Running All Tests ***";
-          ./build/scripts/run_tests.sh;
+          ./build/scripts/deploy.sh;
         else echo "*** Deploying ***"; 
-          ./build/scripts/deploy.sh; 
+          ./build/scripts/run_tests.sh; 
         fi 
     #    ./build/scripts/run_test.sh; 
     #-if [ "$TRAVIS_BRANCH" == "release1.0" ]; 
