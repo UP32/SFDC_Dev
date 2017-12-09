@@ -24,5 +24,6 @@ notifications:
 email:
     recipients:
       - shantanu0805@gmail.com
+      - shantanu.srivastava@makepositive.com
     on_success: always # default: change
     on_failure: always # default: always
