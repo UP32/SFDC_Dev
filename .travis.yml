@@ -3,8 +3,27 @@ node_js: 0.12
 sudo: false
 branches:
      only:
-          - release1.0
-notifications: 
-    slack: shantanu0805:G6gDQ7s7HqJng2e84QEDwq5m          
+          - release1.0     
+          - devzone     
 before_script: ./build/scripts/setup_credentials.sh
-script: ./build/scripts/deploy.sh
+script: 
+    - echo ">>> Deploying to Shantanu Dev <<<"; 
+      echo ">>> TRAVIS_BRANCH = " + $TRAVIS_BRANCH; 
+      echo ">>> TRAVIS_COMMIT_MESSAGE = " + $TRAVIS_COMMIT_MESSAGE;
+      echo ">>> TRAVIS_EVENT_TYPE = " + $TRAVIS_EVENT_TYPE;
+      ./build/scripts/deploy.sh; 
+    #    ./build/scripts/run_test.sh; 
+    #-if [ "$TRAVIS_BRANCH" == "release1.0" ]; 
+    #  then echo "*** Deploying to Shantanu Dev ***"; 
+    #    ./build/scripts/deploy.sh; 
+    #else echo "*** running all tests ***"; 
+    #    ./build/scripts/run_test.sh; 
+    # fi   
+notifications: 
+    slack: shantanu0805:G6gDQ7s7HqJng2e84QEDwq5m     
+email:
+    recipients:
+      - shantanu0805@gmail.com
+      - shantanu.srivastava@makepositive.com
+    on_success: always # default: change
+    on_failure: always # default: always
